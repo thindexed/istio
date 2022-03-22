@@ -7,6 +7,7 @@ fi
 
 
 echo "Using Domain: $DOMAIN"
+echo "============================="
 
 cat ./yaml/istio-operator-base.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | kubectl apply -f -
 cat ./yaml/istio-operator-gateway.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | kubectl apply -f -
