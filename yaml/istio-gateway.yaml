@@ -14,4 +14,4 @@ spec:
       tls:
         mode: SIMPLE
         credentialName: gateway-service-tls
-      hosts: ["app.$DOMAIN"]
+      hosts: ["app.<DOMAIN>"]

@@ -4,9 +4,9 @@ metadata:
   name: gateway-service-tls
   namespace: istio-system
 spec:
-  commonName: $DOMAIN
+  commonName: <DOMAIN>
   dnsNames:
-    - app.$DOMAIN
+    - app.<DOMAIN>
   secretRef:
     name: gateway-service-tls
     namespace: istio-system
