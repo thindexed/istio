@@ -1,0 +1,19 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-gateway
+spec:
+  profile: empty
+  components:
+    ingressGateways:
+      - name: istio-ingressgateway
+        enabled: true
+        k8s:
+          replicaCount: 1
+          serviceAnnotations:
+              dns.gardener.cloud/class: garden
+              dns.gardener.cloud/dnsnames: "*.$DOMAIN, $DOMAIN"
+              dns.gardener.cloud/ttl: "600"
+              service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
+              service.beta.kubernetes.io/aws-load-balancer-type: nlb    

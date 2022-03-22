@@ -1,0 +1,16 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istio-base
+spec:
+  profile: minimal
+  meshConfig:
+    defaultConfig:
+      gatewayTopology:
+        forwardClientCertDetails: APPEND_FORWARD
+      holdApplicationUntilProxyStarts: true
+  components:
+    pilot:
+      k8s:
+        replicaCount: 1
