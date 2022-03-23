@@ -10,6 +10,19 @@ spec:
       gatewayTopology:
         forwardClientCertDetails: APPEND_FORWARD
       holdApplicationUntilProxyStarts: true
+    extensionProviders:
+    - envoyExtAuthzHttp:
+        headersToUpstreamOnAllow:
+        - x-mail
+        - x-family_name
+        - x-given_name
+        - x-role
+        includeHeadersInCheck:
+        - cookie
+        port: "80"
+        service: oidc.auth.svc.cluster.local
+      name: oidc-http
+  
   components:
     pilot:
       k8s:
