@@ -10,10 +10,11 @@ spec:
       - name: istio-ingressgateway
         enabled: true
         k8s:
-          replicaCount: 1
+          replicaCount: 2
           serviceAnnotations:
               dns.gardener.cloud/class: garden
               dns.gardener.cloud/dnsnames: "*.<DOMAIN>, <DOMAIN>"
               dns.gardener.cloud/ttl: "600"
               service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
               service.beta.kubernetes.io/aws-load-balancer-type: nlb    
+
