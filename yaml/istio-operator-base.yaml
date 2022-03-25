@@ -16,11 +16,15 @@ spec:
         - x-mail
         - x-family_name
         - x-given_name
+        - x-name
+        - x-picture
         - x-role
         includeHeadersInCheck:
         - cookie
         port: "80"
         service: oidc.auth.svc.cluster.local
+        includeRequestBodyInCheck:
+          maxRequestBytes: 1000000
       name: oidc-http
   
   components:
