@@ -11,4 +11,13 @@ istioctl operator init --watchedNamespaces=istio-system
 
 ``` 
 
-...deploy all resources in the `yaml` via CI/CD
+# Install Cert-Manager
+
+```sh
+CERT_MANAGER_VERSION=v1.8.0
+
+kubectl create namespace cert-manager
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/$CERT_MANAGER_VERSION/cert-manager.yaml  
+
+
+```

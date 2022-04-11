@@ -32,3 +32,11 @@ spec:
     pilot:
       k8s:
         replicaCount: 1
+    ingressGateways:
+      - name: istio-ingressgateway
+        enabled: true
+        k8s:
+          replicaCount: 2
+          serviceAnnotations:
+              service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
+              service.beta.kubernetes.io/aws-load-balancer-type: nlb    

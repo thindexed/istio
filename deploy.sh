@@ -9,9 +9,10 @@ fi
 echo "Using Domain: $DOMAIN"
 echo "============================="
 
-cat ./yaml/istio-operator-base.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | kubectl apply -f -
-cat ./yaml/istio-operator-gateway.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | kubectl apply -f -
+cat ./yaml/issuer.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | kubectl apply -f -
 cat ./yaml/domain-certificate.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | kubectl apply -f -
+
+cat ./yaml/istio-setup.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | istioctl install -y -f -
 cat ./yaml/istio-gateway.yaml | sed "s~<DOMAIN>~$DOMAIN~g" | kubectl apply -f -
 
 kubectl label namespace default istio-injection=enabled --overwrite

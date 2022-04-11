@@ -1,12 +1,12 @@
-apiVersion: cert.gardener.cloud/v1alpha1
+apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: gateway-service-tls
+  # must be stored in the istio-system namespace. ISTIO ingress pod needs access
   namespace: istio-system
 spec:
-  commonName: <DOMAIN>
-  dnsNames:
-    - <DOMAIN>
-  secretRef:
-    name: gateway-service-tls
-    namespace: istio-system
+  secretName: gateway-service-tls
+  dnsNames: ["<DOMAIN>"]
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
