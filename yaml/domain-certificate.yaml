@@ -6,7 +6,7 @@ metadata:
 spec:
   commonName: <DOMAIN>
   dnsNames:
-    - app.<DOMAIN>
+    - <DOMAIN>
   secretRef:
     name: gateway-service-tls
     namespace: istio-system
