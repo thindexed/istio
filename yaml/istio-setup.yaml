@@ -1,14 +1,9 @@
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
-metadata:
-  namespace: istio-system
-  name: istio-base
 spec:
   profile: minimal
   meshConfig:
     defaultConfig:
-      gatewayTopology:
-        forwardClientCertDetails: APPEND_FORWARD
       holdApplicationUntilProxyStarts: true
     extensionProviders:
     - envoyExtAuthzHttp:
@@ -27,11 +22,11 @@ spec:
           maxRequestBytes: 1000000
           allowPartialMessage: true
       name: oidc-http
-  
   components:
     pilot:
+      enabled: true
       k8s:
-        replicaCount: 1
+        replicaCount: 2
     ingressGateways:
       - name: istio-ingressgateway
         enabled: true
